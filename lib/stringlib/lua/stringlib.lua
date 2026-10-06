@@ -407,3 +407,15 @@ do
     print(string.format("%c%c", 256 + 65, -191))
     --> =AA
 end
+
+do
+    -- Integers are formatted with all 64 bits on every platform.
+    print(string.format("%q", math.maxinteger))
+    --> =9223372036854775807
+
+    print(string.format("%q", 1 << 40))
+    --> =1099511627776
+
+    print(string.gsub("x", "x", {x = 1 << 40}))
+    --> =1099511627776	1
+end

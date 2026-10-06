@@ -220,7 +220,7 @@ func quote(v rt.Value) (string, bool) {
 	}
 	switch v.Type() {
 	case rt.IntType:
-		return strconv.Itoa(int(v.AsInt())), true
+		return strconv.FormatInt(v.AsInt(), 10), true
 	case rt.FloatType:
 		x := v.AsFloat()
 		if math.IsInf(x, 0) {

@@ -237,7 +237,7 @@ func gsub(t *rt.Thread, c *rt.GoCont) (rt.Cont, error) {
 				case rt.StringType:
 					cStrings[i] = v.AsString()
 				case rt.IntType:
-					cStrings[i] = strconv.Itoa(int(v.AsInt()))
+					cStrings[i] = strconv.FormatInt(v.AsInt(), 10)
 				}
 			}
 			if len(captures) == 1 {
