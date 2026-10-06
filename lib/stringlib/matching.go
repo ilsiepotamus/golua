@@ -34,7 +34,7 @@ func find(t *rt.Thread, c *rt.GoCont) (rt.Cont, error) {
 	if err != nil {
 		return nil, err
 	}
-	si := luastrings.StringNormPos(s, int(init)) - 1
+	si := luastrings.StringNormPos(s, rt.ClampToInt(init)) - 1
 	if si < 0 {
 		si = 0
 	}
@@ -89,7 +89,7 @@ func match(t *rt.Thread, c *rt.GoCont) (rt.Cont, error) {
 	if err != nil {
 		return nil, err
 	}
-	si := luastrings.StringNormPos(s, int(init)) - 1
+	si := luastrings.StringNormPos(s, rt.ClampToInt(init)) - 1
 	if si < 0 {
 		si = 0
 	}
@@ -156,7 +156,7 @@ func gmatch(t *rt.Thread, c *rt.GoCont) (rt.Cont, error) {
 	if ptnErr != nil {
 		return nil, ptnErr
 	}
-	si := luastrings.StringNormPos(s, int(init)) - 1
+	si := luastrings.StringNormPos(s, rt.ClampToInt(init)) - 1
 	if si < 0 {
 		si = 0
 	}

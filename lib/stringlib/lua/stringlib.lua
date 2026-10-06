@@ -384,3 +384,26 @@ do
     errd(true)
     --> ~must be a lua function
 end
+
+do
+    -- Positions beyond the platform's int range clamp to the string's ends;
+    -- they must not wrap to small positions.
+    print(string.sub("hello", math.maxinteger) == "")
+    --> =true
+
+    print(string.sub("hello", math.mininteger, math.maxinteger))
+    --> =hello
+
+    print(("hello"):sub(2, math.mininteger) == "")
+    --> =true
+
+    print(string.byte("abc", math.mininteger, math.maxinteger))
+    --> =97	98	99
+
+    print(string.rep("", math.maxinteger) == "")
+    --> =true
+
+    -- Like C's printf, %c keeps the low byte.
+    print(string.format("%c%c", 256 + 65, -191))
+    --> =AA
+end
